@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/PowerTtraders.PowerPosition.IntradayReport.Lib/PowerTtraders.PowerPosition.IntradayReport.Lib.csproj" Id="a68cac93-10ea-4149-9c5c-f940dd95b57b" />
+    <Project Path="src/PowerTtraders.PowerPosition.IntradayReport.Service/PowerTtraders.PowerPosition.IntradayReport.Service.csproj" Id="3f8090c8-dc54-4805-865a-2a9befe8f05a" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/PowerTtraders.PowerPosition.IntradayReport.Lib.Integration.Tests/PowerTtraders.PowerPosition.IntradayReport.Lib.Integration.Tests.csproj" Id="453d534c-800a-4f0f-b384-543ff57badb4" />
+    <Project Path="tests/PowerTtraders.PowerPosition.IntradayReport.Lib.Unit.Tests/PowerTtraders.PowerPosition.IntradayReport.Lib.Unit.Tests.csproj" Id="9be09d69-e675-4b93-96f7-cc84ccafe059" />
+  </Folder>
+</Solution>
