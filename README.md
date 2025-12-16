@@ -19,3 +19,43 @@ This project generates intraday reports for Power Traders, providing insights in
 - can add more logging
 - Can add more configuration options
 - Can Add more unit tests & integration tests
+
+## Build and Run
+### Build the project
+```bash
+podman build -t sample-app .
+```
+### Run the project
+```bash
+podman run -d --name sample-app-container -p 8080:80 sample-app
+```
+OR
+```bash
+podman run -d --name sample-app-container \
+  -p 8080:80 \
+  -e ReportConfig__IntervalMinutes=15 \
+  -e ReportConfig__OutputLocation=c://Reports \
+  sample-app
+```
+### Run with Docker Compose
+```bash
+podman-compose up -d
+```
+
+### Run with Helm
+```bash
+helm install sample-app ./helm/sample-app
+```
+Or upgrade an existing release:
+```bash
+helm upgrade sample-app ./helm/sample-app
+```
+Check deployment status:
+```bash
+helm list
+kubectl get pods
+kubectl get svc
+kubectl get deployments
+```
+
+

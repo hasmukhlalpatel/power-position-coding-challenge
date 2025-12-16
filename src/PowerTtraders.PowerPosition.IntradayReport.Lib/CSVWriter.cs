@@ -6,12 +6,11 @@ public class CSVWriter(ReportConfiguration configuration, ILogger<CSVWriter> log
 {
     public void WriteReport(string reportName, IEnumerable<string> dataLines, CancellationToken cancellationToken = default)
     {
-        logger.LogInformation("Writing report to {reportName}...", reportName);
-
         var filePath = Path.Combine(configuration.OutputLocation, reportName);
+        logger.LogInformation("Writing report to {filePath}...", filePath);
 
         //NOTE: can use File.AppendAllLines() but StreamWriter is a better way to write large file
-        using (StreamWriter writer = new StreamWriter(reportName))
+        using (StreamWriter writer = new StreamWriter(filePath))
         {
             foreach (var line in dataLines)
             {

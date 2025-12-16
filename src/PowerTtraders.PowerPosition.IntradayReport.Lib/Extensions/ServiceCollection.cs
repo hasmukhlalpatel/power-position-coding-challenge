@@ -7,11 +7,12 @@ namespace PowerTtraders.PowerPosition.IntradayReport.Lib.Extensions
     {
         public static IServiceCollection AddIntradayReportServices(this IServiceCollection services)
         {
-            return services.AddScoped<IIntradayReportGenerator, IntradayReportGenerator>()
-                .AddScoped<IPowerServiceWrapper, PowerServiceWrapper>()
-                .AddScoped<ICSVWriter, CSVWriter>()
-                .AddScoped<IDateTimeProvider, DateTimeProvider>()
-                .AddScoped<IPowerService, PowerServiceImplementation>();
+            return services
+                .AddTransient<IIntradayReportGenerator, IntradayReportGenerator>()
+                .AddTransient<IPowerServiceWrapper, PowerServiceWrapper>()
+                .AddTransient<ICSVWriter, CSVWriter>()
+                .AddTransient<IDateTimeProvider, DateTimeProvider>()
+                .AddTransient<IPowerService, PowerServiceImplementation>();
         }
     }
 }
