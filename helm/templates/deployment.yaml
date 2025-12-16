@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "sample-app.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "sample-app.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "sample-app.name" . }}
+    spec:
+      containers:
+        - name: sample-app
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.targetPort }}
+          env:
+            - name: ReportConfig__IntervalMinutes
+              value: {{ .Values.env.ReportConfig__IntervalMinutes | quote }}
+            - name: ReportConfig__OutputLocation
+              value: {{ .Values.env.ReportConfig__OutputLocation | quote }}
+          volumeMounts:
+            - name: reports-volume
+              mountPath: {{ .Values.volume.mountPath }}
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: {{ .Values.service.targetPort }}
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: {{ .Values.service.targetPort }}
+            initialDelaySeconds: 10
+            periodSeconds: 30
+      volumes:
+        - name: reports-volume
+          hostPath:
+            path: {{ .Values.volume.hostPath }}

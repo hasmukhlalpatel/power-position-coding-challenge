@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  sample-app:
+    image: localhost/sample-app:latest
+    container_name: sample-app
+    restart: always
+    environment:
+      ReportConfig__IntervalMinutes: "15"
+      ReportConfig__OutputLocation: "/Reports"
+    volumes:
+      # Mount host folder to container so reports are accessible outside
+      - c:/temp:/Reports
+    ports:
+      - "8080:80"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health/ready"]
+      interval: 30s
+      timeout: 10s
+      retries: 3   
+      start_period: 20s

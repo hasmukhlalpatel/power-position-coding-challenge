@@ -1,0 +1,21 @@
+replicaCount: 1
+
+image:
+  repository: localhost/sample-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+env:
+  ReportConfig__IntervalMinutes: "15"
+  ReportConfig__OutputLocation: "/Reports"
+
+volume:
+  hostPath: "c:/temp"
+  mountPath: "/Reports"
+
+resources: {}

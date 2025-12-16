@@ -1,5 +1,17 @@
 <Solution>
+  <Folder Name="/helm/">
+    <File Path="helm/Chart.yaml" />
+    <File Path="helm/values.yaml" />
+  </Folder>
+  <Folder Name="/helm/templates/">
+    <File Path="helm/templates/deployment.yaml" />
+    <File Path="helm/templates/service.yaml" />
+  </Folder>
   <Folder Name="/Solution Items/">
+    <File Path=".dockerignore" />
+    <File Path=".gitignore" />
+    <File Path="docker-compose.yml" />
+    <File Path="Dockerfile" />
     <File Path="README.md" />
   </Folder>
   <Folder Name="/src/">
