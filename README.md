@@ -39,7 +39,7 @@ podman run -d --name sample-app-container \
 ```
 ### Run with Docker Compose
 ```bash
-podman-compose up -d
+podman compose up -d
 ```
 
 ### Run with Helm
